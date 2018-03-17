@@ -1,13 +1,14 @@
 const path = require( 'path' );
 const HtmlWebpackPlugin = require( 'html-webpack-plugin' );
 const CleanWebpackPlugin = require( 'clean-webpack-plugin' );
+const UglifyJSPlugin = require( 'uglifyjs-webpack-plugin' );
 const webpack = require( 'webpack' );
 
 module.exports = {
   entry: {
     app: './src/index.js',
   },
-  devtool: 'inline-source-map',
+  // devtool: 'inline-source-map',
   devServer: {
     contentBase: './dist',
     hot: true
@@ -26,7 +27,13 @@ module.exports = {
       title: 'Hot Module Replacement'
     } ),
     new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    new UglifyJSPlugin( {
+      sourceMap: true,
+      uglifyOptions: {
+          inline: false,
+      }
+    } ),
+    // new webpack.HotModuleReplacementPlugin()
   ],
   output: {
     filename: '[name].bundle.js',
