@@ -26,6 +26,8 @@
     "xml-loader": "^1.2.1"
   },
   "dependencies": {
-    "lodash": "^4.17.5"
+    "babel-polyfill": "^6.26.0",
+    "lodash": "^4.17.5",
+    "whatwg-fetch": "^2.0.3"
   }
 }

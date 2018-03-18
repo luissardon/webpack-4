@@ -5,15 +5,19 @@ const HtmlWebpackPlugin = require( 'html-webpack-plugin' );
 
 module.exports = {
   entry: {
+    polyfills: './src/polyfills.js',
     app: './src/index.js'
   },
   plugins: [
     new CleanWebpackPlugin( [ 'dist' ] ),
     new HtmlWebpackPlugin( {
-      title: 'Caching'
+      title: 'Shimming'
     } ),
     new webpack.HashedModuleIdsPlugin(),
-    new webpack.NamedModulesPlugin() // Not woking :/
+    new webpack.NamedModulesPlugin(), // Not woking :/
+    new webpack.ProvidePlugin( {
+      join: ['lodash', 'join']
+    } )
   ],
   output: {
     filename: '[name].[hash].bundle.js',
