@@ -18,6 +18,8 @@
     "html-webpack-plugin": "^3.0.6",
     "http-server": "^0.11.1",
     "style-loader": "^0.20.3",
+    "ts-loader": "^4.1.0",
+    "typescript": "^2.7.2",
     "uglifyjs-webpack-plugin": "^1.2.4",
     "webpack": "^4.1.1",
     "webpack-cli": "^2.0.12",
@@ -28,6 +30,7 @@
     "xml-loader": "^1.2.1"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.105",
     "babel-polyfill": "^6.26.0",
     "lodash": "^4.17.5",
     "whatwg-fetch": "^2.0.3"

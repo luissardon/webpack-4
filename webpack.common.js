@@ -5,23 +5,32 @@ const HtmlWebpackPlugin = require( 'html-webpack-plugin' );
 
 module.exports = {
   entry: {
-    polyfills: './src/polyfills.js',
-    app: './src/index.js'
+    app: './src/index.ts'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        include: path.resolve( __dirname, 'src' ),
+        exclude: /node_modules/
+      }
+    ]
+  },
+  resolve: {
+    extensions: [ '.tsx', '.ts', '.js' ]
   },
   plugins: [
     new CleanWebpackPlugin( [ 'dist' ] ),
     new HtmlWebpackPlugin( {
-      title: 'Progressive Web Application'
+      title: 'Typescript'
     } ),
     new webpack.HashedModuleIdsPlugin(),
-    new webpack.NamedModulesPlugin(), // Not woking :/
-    new webpack.ProvidePlugin( {
-      join: ['lodash', 'join']
-    } )
+    new webpack.NamedModulesPlugin(), // Seems not to work :/
   ],
   output: {
-    filename: '[name].[hash].bundle.js',
-    chunkFilename: '[name].[hash].bundle.js',
+    filename: '[name].bundle.js',
+    chunkFilename: '[name].bundle.js',
     path: path.resolve( __dirname, 'dist' )
   },
   optimization: {
@@ -35,7 +44,7 @@ module.exports = {
       }
     },
     runtimeChunk: {
-      name: "manifest",
+      name: 'manifest',
     },
   }
 };

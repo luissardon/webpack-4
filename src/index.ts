@@ -1,16 +1,17 @@
+import * as _ from 'lodash';
 import Print from './print';
 
-function component() {
+const component = () => {
   var element = document.createElement( 'div' );
   var button = document.createElement( 'button' );
   var br = document.createElement( 'br' );
 
   button.innerHTML = 'Click me and look at the console!';
-  element.innerHTML = join( [ 'Hello', 'webpack' ], ' ' );
-  element.appendChild(br);
-  element.appendChild(button);
+  element.innerHTML = _.join( [ 'Hello', 'webpack' ], ' ' );
+  element.appendChild( br );
+  element.appendChild( button );
 
-  button.onclick = Print.bind(null, 'Hello webpack!');
+  button.onclick = Print.bind( null, 'Hello webpack!' );
 
   return element;
 }
