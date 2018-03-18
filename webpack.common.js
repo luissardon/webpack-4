@@ -1,7 +1,7 @@
 const path = require( 'path' );
+const webpack = require( 'webpack' );
 const CleanWebpackPlugin = require( 'clean-webpack-plugin' );
 const HtmlWebpackPlugin = require( 'html-webpack-plugin' );
-const webpack = require( 'webpack' );
 
 module.exports = {
   entry: {
@@ -10,12 +10,13 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin( [ 'dist' ] ),
     new HtmlWebpackPlugin( {
-      title: 'Production'
+      title: 'Code Splitting'
     } ),
     new webpack.NamedModulesPlugin(),
   ],
   output: {
     filename: '[name].bundle.js',
+    chunkFilename: '[name].bundle.js',
     path: path.resolve( __dirname, 'dist' )
   }
 };
