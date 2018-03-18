@@ -11,7 +11,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin( [ 'dist' ] ),
     new HtmlWebpackPlugin( {
-      title: 'Shimming'
+      title: 'Progressive Web Application'
     } ),
     new webpack.HashedModuleIdsPlugin(),
     new webpack.NamedModulesPlugin(), // Not woking :/
