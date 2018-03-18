@@ -10,13 +10,28 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin( [ 'dist' ] ),
     new HtmlWebpackPlugin( {
-      title: 'Lazy Loading'
+      title: 'Caching'
     } ),
-    new webpack.NamedModulesPlugin(),
+    new webpack.HashedModuleIdsPlugin(),
+    new webpack.NamedModulesPlugin() // Not woking :/
   ],
   output: {
-    filename: '[name].bundle.js',
-    chunkFilename: '[name].bundle.js',
+    filename: '[name].[hash].bundle.js',
+    chunkFilename: '[name].[hash].bundle.js',
     path: path.resolve( __dirname, 'dist' )
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          chunks: 'all',
+          name: 'vendor',
+          test: /[\/]node_modules[\/]/
+        }
+      }
+    },
+    runtimeChunk: {
+      name: "manifest",
+    },
   }
 };
